@@ -1,3 +1,7 @@
+m2_i_user:
+    resource: "@M2IUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 m2_i_blog:
     resource: "@M2IBlogBundle/Resources/config/routing.yml"
     prefix:   /

@@ -1,8 +1,25 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
- <div class="content-grid">
-     <div class="content-grid-info">
+<div class="content-grid">
+    {% for article in articleList %}
+        <div class="content-grid-info">
+            <img src="{{ asset('images/post'~random('123')~'.jpg') }}" alt=""/>
+            <div class="post-info">
+                <h4><a href="{{ path('m2_i_blog_detail_article',{'idArticle':article.id}) }}">
+                  {{ article.title }}</a>
+                  {{ article.createDate | date("d/m/Y") }}/ {{ article.comment|length }} Commentaires
+                  <a href="{{ path('m2_i_blog_edit_article', {'idArticle': article.id })}}">Edit</a>
+                  <a href="{{ path('m2_i_blog_remove_article', {'idArticle': article.id })}}">Delete</a>
+
+                </h4>
+                <p> {{ article.description }}</p>
+                <a href="{{ path('m2_i_blog_detail_article',{'idArticle':article.id}) }}"><span></span>READ MORE</a>
+            </div>
+          </div>
+    {% endfor %}
+</div>
+<!--
          <img src="{{ asset('images/post1.jpg') }}" alt=""/>
          <div class="post-info">
          <h4><a href="single.html">Lorem ipsum dolor sit amet</a>  July 30, 2014 / 27 Comments</h4>
@@ -26,6 +43,7 @@
          <a href="single.html"><span></span>READ MORE</a>
          </div>
      </div>
-     
+
  </div>
+ -->
 {% endblock %}
